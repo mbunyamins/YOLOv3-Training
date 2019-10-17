@@ -1,7 +1,7 @@
 # YOLOv3-Training
  This repo contains step-by-step instructions for training on YOLOv3.
  
- ### Arranging .txt Files
+ ## Arranging .txt Files
  For training a new class, you must collect adequate number of images. It is recommended that to use at least 2000 samples for each class. In order to train the network, a txt file must be available for each photo with the same name. For example if I my image name is horse.jpg, my txt file name must be horse.txt.
  Each txt file must contain the data in the desired format for the objects in the photo. 
  
@@ -34,5 +34,8 @@ Since YOLOv3 makes estimations over anchors, it is important to calculate anchor
 You must give the location of the arranged data file, you must set anchor number and network input width and height. This function calculates anchor size with using k-means clustering.
 
 ### Arranging Class and Filter Number
-In the configuration file you must set the class number and filter number. In the configuration file 610, 696 and 783 lines, it must be arranged class number. Also, in lines 603, 689 and 776 it must be set
-
+In the configuration file you must set the class number and filter number. In the configuration file 610, 696 and 783 lines, it must be arranged class number. Also, in lines 603, 689 and 776 it must be set the filter number. Filter number can bu calculated as 
+```
+filter number = (B x (5 + C))
+```
+In this formula C is the class number and B is the number of prediction across different scale. It is arranged to 3 in YOLOv3 because it predicts 3 different scale.
