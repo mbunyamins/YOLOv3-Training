@@ -60,3 +60,6 @@ If training stops for some reasons, you can continue where the training is left.
 ./darknet detector train cfg/face.data cfg/face.cfg backup/face_last.weights -map
 ```
 The name of the saved chart can be changed to avoid loss of previously extracted loss graph.
+
+You can see sample config, names and data file in [configFiles](configFiles) directory. Also there is [validation.txt](configFiles/validation.txt) file which you can see the names of validation images. 
+For more information you can see [AlexeyAB](https://github.com/AlexeyAB/darknet) repo.
