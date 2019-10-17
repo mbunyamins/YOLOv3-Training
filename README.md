@@ -55,3 +55,8 @@ With using produced pre-trained model, you can start your training with followin
 ```
 ./darknet detector train cfg/face.data cfg/face.cfg yolov3.conv.81 -map
 ```
+If training stops for some reasons, you can continue where the training is left. With using the following command you can continue the training.
+```
+./darknet detector train cfg/face.data cfg/face.cfg backup/face_last.weights -map
+```
+The name of the saved chart can be changed to avoid loss of previously extracted loss graph.
