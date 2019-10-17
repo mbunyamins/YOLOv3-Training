@@ -13,3 +13,26 @@ First item of the line corresponds to class number. If you have 1 class the clas
 ```
 normalizedXcenter = xCenter / imageWidth
 ```
+You can find sample image and txt representation in [samples](samples/) directory. 
+
+## Arranging Configuration Files
+Configuration files must be set before training starts. There are 3 basic files that need to be adjusted which are namely config file, names file an data file.
+
+### Arranging Config File
+* The input width and height of the network must be specified. The input width and height of the network affect, network success, speed, computational cost etc. Therefore, it must be arranged carefully for the desired system. 
+* Batch size specifies how many photos will be processed in one iteration so it is cruical for system convergence. Finding the average error of photos and updating the system according to this error will facilitate the convergence of the system. It is generally set to 64 or 32.
+* Subdivision determines how many photos will be processed in a sub-section of batch size. Therefore subdivision must be smaller than batch size. How many transactions take place at the same time can be found as 
+```
+number of photos processed at the same time = batch size / subdivision
+```
+### Arranging Anchor Sizes
+Since YOLOv3 makes estimations over anchors, it is important to calculate anchors depending on the given dataset in terms of successful training. It can be found with given function in the [AlexeyAB](https://github.com/AlexeyAB/darknet) darknet repo. Just open the terminal and write the following command
+
+```
+./darknet detector calc_anchors cfg/face.data* -num_of_clusters 9 -width 800** -height 800***
+```
+You must give the location of the arranged data file, you must set anchor number and network input width and height. This function calculates anchor size with using k-means clustering.
+
+### Arranging Class and Filter Number
+In the configuration file you must set the class number and filter number. In the configuration file 610, 696 and 783 lines, it must be arranged class number. Also, in lines 603, 689 and 776 it must be set
+
